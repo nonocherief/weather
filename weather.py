@@ -6,12 +6,12 @@ res = requests.get("https://api.open-meteo.com/v1/forecast?latitude=48.2092&long
 #print(res.text)
 #print(r.json())
 
-adat = res.json()
+data = res.json()
 
 i=0
-while i<len(adat["hourly"]["time"]):
-    print(adat["hourly"]["time"][i])
-    print(adat["hourly"]["temperature_2m"][i])
+while i<len(data["hourly"]["time"]):
+    print(data["hourly"]["time"][i])
+    print(data["hourly"]["temperature_2m"][i])
     i=i+1
 
 def goodforrunning(l1):
@@ -21,7 +21,7 @@ def goodforrunning(l1):
             x=False
     return x
 
-print(goodforrunning(adat["hourly"]["temperature_2m"][0:24]))
+print(goodforrunning(data["hourly"]["temperature_2m"][0:24]))
 
 def time(l2):
     b=0
@@ -31,7 +31,7 @@ def time(l2):
         print(l2["time"][a])
         print(goodforrunning(l2["temperature_2m"][a:b]))
 
-time(adat["hourly"])
+time(data["hourly"])
 
 
 
